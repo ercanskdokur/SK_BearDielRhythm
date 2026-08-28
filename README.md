@@ -95,11 +95,11 @@ If you use this code, please cite the manuscript above. _(Update once available.
 
 ## License
 
-**[Choose a license.]** A permissive license such as **MIT** is recommended for
-the code; note that the third-party datasets referenced in `data/README.md`
-retain their own licences and terms.
+Released under the **MIT License** — see [`LICENSE`](LICENSE). Note that the
+third-party datasets referenced in `data/README.md` retain their own licences
+and terms.
 
 ## Contact
 
-Maintainer: **[Name]** ([@ercanskdokur](https://github.com/ercanskdokur)) —
-**[email]**.
+Maintainer: **Ercan Sıkdokur** ([@ercanskdokur](https://github.com/ercanskdokur)).
+For questions, use GitHub or the corresponding-author details in the manuscript.
