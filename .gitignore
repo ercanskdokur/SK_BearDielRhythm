@@ -43,6 +43,14 @@ __pycache__/
 *.pyo
 .ipynb_checkpoints/
 
+# ---- Esri shapefile sidecars (leak creator metadata / unnecessary) -----------
+# .shp.xml embeds the creator's username, hostname and local paths; .sbn/.sbx
+# are proprietary spatial indexes regenerated on demand. Ship only the portable
+# set: .shp .shx .dbf .prj .cpg
+*.shp.xml
+*.sbn
+*.sbx
+
 # ---- OS / editor junk --------------------------------------------------------
 .DS_Store
 Thumbs.db
