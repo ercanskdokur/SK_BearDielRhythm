@@ -83,11 +83,11 @@ container (`sub_*.sh`).
   formats and run stages 01–02.
 - **`EnvironmentalPreds/` + `shapefiles/`** — the environmental predictors and
   study-area vectors used by the models and figures.
-- **External datasets** (ERA5-Land, E-OBS, Esri land cover, WDPA, Natural Earth)
+- **External datasets** (ERA5-Land, E-OBS, ESRI land cover, WDPA, Natural Earth)
   are **not redistributed**; obtain them from the original providers as
   documented in [`data/README.md`](data/README.md).
-- Real bear GPS/accelerometer data are sensitive (threatened species) and are
-  available from the authors on reasonable request.
+- Real bear GPS/accelerometer data are sensitive (a legally protected species)
+  and are available from the authors on reasonable request.
 
 ## Citation
 
