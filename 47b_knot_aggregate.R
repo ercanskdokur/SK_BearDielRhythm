@@ -55,14 +55,12 @@ for (K in Kset) {
   f3 <- readRDS(file.path(mod_path, sprintf("knotsens_H3_k%d_intensity.rds", K)))$fit
   f4 <- readRDS(file.path(mod_path, sprintf("knotsens_H4_k%d_intensity.rds", K)))$fit
   lc <- loo::loo_compare(f3$criteria$loo, f4$criteria$loo)
-  best <- rownames(lc)[1]
   e3 <- f3$criteria$loo$estimates["elpd_loo","Estimate"]
   e4 <- f4$criteria$loo$estimates["elpd_loo","Estimate"]
   nf <- gcomp_nightfrac(f3)
   rows[[as.character(K)]] <- data.frame(
     k = K, elpd_H3 = e3, elpd_H4 = e4,
     elpd_diff_H3_minus_H4 = e3 - e4, se_diff = lc[2,"se_diff"],
-    best_model = ifelse(grepl("f3|H3", best) || best == rownames(lc)[which.max(c(e3,e4))], "H3", "H4"),
     nightfrac_near = nf["nf_near"], nightfrac_far = nf["nf_far"],
     nightfrac_contrast_NearMinusFar = nf["contrast"],
     contrast_lo = nf["lo"], contrast_hi = nf["hi"], contrast_pd = nf["pd"],

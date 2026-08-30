@@ -346,6 +346,13 @@ get_time_var <- function(axis = Sys.getenv("TIME_AXIS", unset = "solar_double"))
     stop("TIME_AXIS must be solar_double | solar_sunset | clock, got: ", axis))
 }
 
+# Explicit boundary knots for the cc basis.
+# BUG (old code): s(Hour_block, bs='cc') was called without knots. Because the
+# data span 0..23, mgcv places the boundary knots at min/max = 0 and 23 -> it
+# forces f(0)=f(23), i.e. the 24-hour cycle is compressed into 23 HOURS (~4%
+# time-axis distortion, which directly affects the peak location/sharpness).
+make_knots <- function(time_var) stats::setNames(list(c(0, 24)), time_var)
+
 
 # ---- 8. SEASONS / AGE ---------------------------------------------------------
 season_defs <- list(

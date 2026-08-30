@@ -8,7 +8,7 @@
 #   H3 gives (b): from the cell's dump/road distance it predicts the diel curve and
 #   we compute the SHARE of the curve falling in the conflict window (timing-
 #   normalised; cleaned of the overall activity level -> no "level vs timing" mix).
-#   For (a) we use a use-density (KDE) layer from GPS positions.
+#   For (a) we use a smoothed GPS use-intensity surface (focal mean, not a true KDE).
 #
 # IMPORTANT LIMIT: this is not a PROBABILITY map, but a "given H3, if a bear is
 #   active here, what share of its activity falls in the human window" map. Real
@@ -160,9 +160,10 @@ gdf$frac_evening[rr$idx] <- rr$frac_evening
 gdf$auc[rr$idx]          <- rr$auc
 gdf$frac_conflict <- gdf$frac_morning + gdf$frac_evening
 
-# ---- 5. EXPOSURE LAYER (GPS use density) -------------------------------------
+# ---- 5. EXPOSURE LAYER (smoothed GPS use-intensity) --------------------------
 # Temporal overlap alone is not risk: a high overlap in a cell the bear NEVER goes
-# to is meaningless. A simple density from GPS positions.
+# to is meaningless. A simple smoothed use-intensity surface from GPS positions
+# (focal-mean smoothing of the fix count; not a true kernel density estimate).
 pos <- readRDS(file.path(dat_path, "position_interpolated.rds"))
 pv  <- terra::vect(as.matrix(pos[, c("X_utm","Y_utm")]), type = "points", crs = study_crs)
 use <- terra::rasterize(pv, tmpl, fun = "length", background = 0)  # "count" -> masked by dplyr::count; length is the base fn

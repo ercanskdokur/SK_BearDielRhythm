@@ -43,6 +43,10 @@ Supplementary Table (S*xx*) it produces**.
 └── data/README.md                 # where to obtain the external datasets
 ```
 
+> **Note:** the SLURM helper `sub_C_derived.sh` lists a `16_*` step in its usage
+> text; that script is **not part of this repository** and is **not used** to
+> reproduce the manuscript results — you can ignore that line.
+
 ## Requirements
 
 The pipeline is designed to run **only inside the analysis container** (R 4.2.0

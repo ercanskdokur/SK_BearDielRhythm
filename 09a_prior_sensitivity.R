@@ -34,9 +34,7 @@ if (!identical(h0$family, ZIB)) {
 }
 fit_default <- h0$fit
 d_mod <- h0$data
-SCALE_CONST <- h0$scale_const
-log_step("H0 loaded: n=%d, family=%s, SCALE=%.0f",
-         nrow(d_mod), h0$family, SCALE_CONST)
+log_step("H0 loaded: n=%d, family=%s", nrow(d_mod), h0$family)
 # The old `Activity_scaled` response no longer exists; H0 was fit with
 # Act_intensity. That block produced a numeric(0) assignment -> REMOVED.
 # priorsense operates on the fitted h0$fit; the manual tier uses Act_intensity.
